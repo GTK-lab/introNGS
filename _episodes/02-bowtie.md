@@ -1,13 +1,11 @@
 ---
-title: "Performing read alignments using Bowtie2"
-teaching: 10
-exercises: 20
+title: "Read alignment using *bowtie2*"
+teaching: 15
+exercises: 15
 questions:
-- "How are reads aligned to the reference genome?"
 objectives:
-- "Understand the different options available in *bowtie2*".
-- "Be able to perform an alignment of reads obtained to a reference genome." 
 keypoints:
+
 ---
 
 # Read alignment using *Bowtie2* 
