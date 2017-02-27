@@ -3,25 +3,10 @@ layout: lesson
 root: .
 ---
 
-The Unix shell has been around longer than most of its users have been alive.
-It has survived so long because it's a power tool
-that allows people to do complex things with just a few keystrokes.
-More importantly,
-it helps them combine existing programs in new ways
-and automate repetitive tasks
-so they aren't typing the same things over and over again.
-Use of the shell is fundamental to using a wide range of other powerful tools 
-and computing resources (including "high-performance computing" supercomputers).
-These lessons will start you on a path towards using these resources effectively.
-
+Next generation sequencing (NGS) is increasingly used to address a range of different questions including gene expression, copy number variations and transcription factor binding site. The analysis of NGS data is very bioinformatics intensive. Following sequencing, millions of short reads are produced. In and of themselves, it is impossible to make sense of the data. Hence, these reads have to be aligned against a reference genome prior to further analysis. This practical class will take you through the first few steps of NGS data analysis: quality control of reads, alignment and some basic manipulation using samtools.  
 > ## Prerequisites
 >
-> This lesson guides you through the basics of file systems and the
-> shell.  If you have stored files on a computer at all and recognize
-> the word “file” and either “directory” or “folder” (two common words
-> for the same thing), you're ready for this lesson.
->
-> If you're already comfortable manipulating files and directories,
-> searching for files with `grep` and `find`, and writing simple loops
-> and scripts, you probably won't learn much from this lesson.
+> This lesson guides you through the basics of NGS data analysis. It is assumed that
+> you are at least comfortable working in the command line and are familiar with 
+> some basic linux terminologies. 
 {: .prereq}
