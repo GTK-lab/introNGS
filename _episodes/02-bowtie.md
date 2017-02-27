@@ -1,5 +1,5 @@
 ---
-title: "Read alignment using *bowtie2*"
+title: "Read alignment using bowtie2"
 teaching: 15
 exercises: 15
 questions:
