@@ -1,9 +1,13 @@
 ---
 title: "Read alignment using bowtie2"
 teaching: 15
-exercises: 15
+exercises: 30
 questions:
+- "How do we perform alignment of reads, starting from a fastq file?"
 objectives:
+- "Understand the difference between bowtie and bowtie2, and choose the appropriate software to perform alignment."
+- "Be able to align raw reads, starting from a raw fastq file." 
+- "Understand the range of options available in bowtie2 for alignment." 
 keypoints:
 
 ---
