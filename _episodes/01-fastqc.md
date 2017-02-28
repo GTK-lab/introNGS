@@ -21,7 +21,7 @@ Before analysing sequencing data to draw biological conclusions you should alway
 
 FastQC aims to provide a QC report which can spot problems which originate either in the sequencer or in the starting library material.
 
-> ##Downloading FastQC**
+> ##Downloading FastQC
 > ~~~
 > wget http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.5.zip
 > unzip fastqc_v0.11.5.zip
@@ -140,9 +140,9 @@ There are two lines on the plot. The blue line takes the full sequence set and s
 
 In a **properly diverse library** most sequences should fall into the far left of the plot in both the red and blue lines. A general level of enrichment, indicating broad oversequencing in the library will tend to flatten the lines. 
 
-*More specific enrichments of subsets, or the presence of low complexity contaminants will tend to produce spikes towards the right of the plot. 
+ * More specific enrichments of subsets, or the presence of low complexity contaminants will tend to produce spikes towards the right of the plot. 
 
-*These high duplication peaks will most often appear in the blue trace but usually disappear in the red trace as they make up an insignificant proportion of the deduplicated set. 
+ * These high duplication peaks will most often appear in the blue trace but usually disappear in the red trace as they make up an insignificant proportion of the deduplicated set. 
 
 If peaks persist in the blue trace then this suggests that there are a large number of different highly duplicated sequences which might indicate either a contaminant set or a very severe technical duplication.
 
