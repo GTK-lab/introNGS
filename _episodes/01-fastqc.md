@@ -2,12 +2,12 @@
 title: "FastQC"
 teaching: 15
 exercises: 15
-Topics:
+questions:
 - "Why do we do a quality check?"
 - "What is FastQC?"
 - "A review on the illumina sequencing technology"
-- "Running FastQC"
-- "Analysing a FastQC report"
+- "How to run FastQC"
+- "How to analyse a FastQC report"
 objectives:
 - "Describe the illumina sequencing protocol."
 - "Identify and explain potential problems in the sequencing."
