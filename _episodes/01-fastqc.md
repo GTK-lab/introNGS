@@ -32,7 +32,7 @@ FastQC aims to provide a QC report which can spot problems which originate eithe
 
 ## A review on the illumina sequencing technology
 
-https://www.youtube.com/watch?v=HMyCqWhwB8E
+[https://www.youtube.com/watch?v=HMyCqWhwB8E]({{ https://www.youtube.com/watch?v=HMyCqWhwB8E}})
 
 ## Running FastQC
 Let's do a quality check on the runs you would have downloaded from IVLE. They are the first 1 million reads of a paired-end RNA-seq experiment. 
@@ -46,7 +46,7 @@ Fastqc will produce a .html file which is the quality checking output. Further d
 
 ## Analysing a FastQC report
 
-**Per Base Sequence Quality**
+## Per Base Sequence Quality
 
 ![Per Base Sequence Quality](../fig/per_base_quality.png)
 
@@ -63,7 +63,7 @@ Fastqc will produce a .html file which is the quality checking output. Further d
 > If your library has reads of varying length then you can find a warning or error is triggered from this module because of very low coverage for a given base range. 
 {: .callout}
 
-**Per Tile Sequence Quality**
+## Per Tile Sequence Quality
 
 ![Per Tile Sequence Quality](../fig/per_tile_quality.png)
 
@@ -74,7 +74,7 @@ The colours are on a scale from cold ( quality => average quality) to hot (quali
 > It has been observed that greater variation in the phred scores attributed to tiles can also appear when a flowcell is generally overloaded. 
 {: .callout}
 
-**Per Sequence Quality Scores**
+## **Per Sequence Quality Scores**
 
 ![Per Sequence Quality](../fig/per_sequence_quality.png)
 
@@ -87,7 +87,7 @@ The per sequence quality score report allows you to see if a subset of your sequ
 > * For long runs this may be alleviated through quality trimming. 
 {: .callout}
 
-**Per Base Sequence Content**
+## Per Base Sequence Content
 
 ![Per Base Sequence Content](../fig/per_base_sequence_content.png)
 
@@ -103,7 +103,7 @@ In a random library you would expect that there would be little to no difference
 
 Whilst this is a true technical bias, it isn't something which can be corrected by trimming and in most cases doesn't seem to adversely affect the downstream analysis. It will however produce a warning or error in this module.
 
-**Per Sequence GC Content**
+## Per Sequence GC Content
 
 ![Per sequence GC content](../fig/per_sequence_gc_content.png)
 
@@ -118,7 +118,7 @@ In a normal random library you would expect to see a roughly normal distribution
 > * Broader peaks may represent contamination with a different species.
 {: .callout}
 
-**Per Base N Content**
+## Per Base N Content
 
 ![Per Base N content](../fig/per_base_n_content.png)
 
@@ -129,13 +129,13 @@ If a sequencer is unable to make a base call with sufficient confidence then it 
 > The most common reason for the inclusion of significant proportions of Ns is a general loss of quality.
 {: .callout}
 
-**Sequence Length Distribution**
+## Sequence Length Distribution
 
 ![Sequence length distribution](../fig/sequence_length_distribution.png)
 
 For some sequencing platforms it is entirely normal to have different read lengths so warnings here can be ignored.
 
-**Duplicate Sequences**
+## Duplicate Sequences
 
 ![Duplication levels](../fig/duplication_levels.png)
 
@@ -163,7 +163,7 @@ If peaks persist in the blue trace then this suggests that there are a large num
 > However in some library types you will naturally tend to over-sequence parts of the library and therefore generate duplication and will therefore expect to see warnings or error from this module.
 {: .callout}
 
-**Overrepresented Sequences**
+## Overrepresented Sequences
 
 A normal high-throughput library will contain a diverse set of sequences, with no individual sequence making up a tiny fraction of the whole. Finding that a single sequence is very overrepresented in the set either means that it is highly biologically significant, or indicates that the library is contaminated, or not as diverse as you expected.
 
@@ -172,11 +172,11 @@ A normal high-throughput library will contain a diverse set of sequences, with n
 > This module will often be triggered when used to analyse small RNA libraries where sequences are not subjected to random fragmentation, and the same sequence may naturally be present in a significant proportion of the library.
 {: .callout}
 
-**Adapter Content**
+## Adapter Content
 
 The sequences will need to be adapter trimmed before proceeding with any downstream analysis.
 
-**Kmer Content**
+## Kmer Content
 
 ![kmer_profiles](../fig/kmer_profiles.png)
 
