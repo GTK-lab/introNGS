@@ -6,10 +6,10 @@
 carpentry: "swc"
 
 # Overall title for pages.
-title: "The Unix Shell"
+title: "Introduction to Next Generation Sequencing data analysis"
 
 # Contact email address.
-email: lessons@software-carpentry.org
+email: dbsgtk@nus.edu.sg
 
 #------------------------------------------------------------
 # Generic settings (should not need to change).
