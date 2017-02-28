@@ -149,7 +149,7 @@ In a **properly diverse library** most sequences should fall into the far left o
 
  * These high duplication peaks will most often appear in the blue trace but usually disappear in the red trace as they make up an insignificant proportion of the deduplicated set. 
 
-If peaks persist in the blue trace then this suggests that there are a large number of different highly duplicated sequences which might indicate either a contaminant set or a very severe technical duplication.
+If peaks persist in the red trace then this suggests that there are a large number of different highly duplicated sequences which might indicate either a contaminant set or a very severe technical duplication.
 
 > ## Common reasons for warnings
 >
