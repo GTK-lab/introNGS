@@ -50,7 +50,7 @@ Fastqc will produce a .html file which is the quality checking output. Further d
 
 ![Per Base Sequence Quality](../fig/per_base_quality.png)
 
-> Common reasons for warnings
+> ##Common reasons for warnings
 > 
 > General degradation of quality over the duration of long runs.
 >
@@ -61,7 +61,7 @@ Fastqc will produce a .html file which is the quality checking output. Further d
 > * Consider masking bases during subsequent mapping or assembly.
 >
 > If your library has reads of varying length then you can find a warning or error is triggered from this module because of very low coverage for a given base range. 
-
+{: .callout}
 
 **Per Tile Sequence Quality**
 
@@ -69,9 +69,10 @@ Fastqc will produce a .html file which is the quality checking output. Further d
 
 The colours are on a scale from cold ( quality => average quality) to hot (quality < average quality). **A good plot should be blue all over.**
 
-> Common reasons for warnings
+> ##Common reasons for warnings
 >
 > It has been observed that greater variation in the phred scores attributed to tiles can also appear when a flowcell is generally overloaded. 
+{: .callout}
 
 **Per Sequence Quality Scores**
 
@@ -79,11 +80,12 @@ The colours are on a scale from cold ( quality => average quality) to hot (quali
 
 The per sequence quality score report allows you to see if a subset of your sequences have universally low quality values. 
 
-> Common reasons for warnings
+> ##Common reasons for warnings
 >
-> Errors here usually indicate a general loss of quality within a run.Evaluation with tile quality might shed insight to error. 
+> Errors here usually indicate a general loss of quality within a run. Evaluation with tile quality might shed insight to error. 
 >
->*For long runs this may be alleviated through quality trimming. 
+> * For long runs this may be alleviated through quality trimming. 
+{: .callout}
 
 **Per Base Sequence Content**
 
@@ -91,12 +93,13 @@ The per sequence quality score report allows you to see if a subset of your sequ
 
 In a random library you would expect that there would be little to no difference between the different bases of a sequence run, so the lines in this plot should run parallel with each other. 
 
-> Common reasons for warnings
+> ##Common reasons for warnings
 >
 > 1. Overrepresented sequences 
 > 2. Biased fragmentation
 > 3. Biased composition libraries
 > 4. Library which has been aggressively adapter trimmed.
+{: .callout}
 
 Whilst this is a true technical bias, it isn't something which can be corrected by trimming and in most cases doesn't seem to adversely affect the downstream analysis. It will however produce a warning or error in this module.
 
@@ -106,13 +109,14 @@ Whilst this is a true technical bias, it isn't something which can be corrected 
 
 In a normal random library you would expect to see a roughly normal distribution of GC content where the central peak corresponds to the overall GC content of the underlying genome. Since we don't know the the GC content of the genome the modal GC content is calculated from the observed data and used to build a reference distribution.
 
-> Common reasons for warnings
+> ##Common reasons for warnings
 >
 > Warnings in this module usually indicate a problem with the library. 
 >
-> *Sharp peaks on an otherwise smooth distribution are normally the result of a specific contaminant (adapter dimers for example), which may well be picked up by the overrepresented sequences module. 
+> * Sharp peaks on an otherwise smooth distribution are normally the result of a specific contaminant (adapter dimers for example), which may well be picked up by the overrepresented sequences module. 
 >
-> *Broader peaks may represent contamination with a different species.
+> * Broader peaks may represent contamination with a different species.
+{: .callout}
 
 **Per Base N Content**
 
@@ -120,9 +124,10 @@ In a normal random library you would expect to see a roughly normal distribution
 
 If a sequencer is unable to make a base call with sufficient confidence then it will normally substitute an N rather than a conventional base call.
 
-> Common reasons for warnings
+> ##Common reasons for warnings
 > 
 > The most common reason for the inclusion of significant proportions of Ns is a general loss of quality.
+{: .callout}
 
 **Sequence Length Distribution**
 
@@ -146,23 +151,26 @@ In a **properly diverse library** most sequences should fall into the far left o
 
 If peaks persist in the blue trace then this suggests that there are a large number of different highly duplicated sequences which might indicate either a contaminant set or a very severe technical duplication.
 
-> Common reasons for warnings
+> ##Common reasons for warnings
 >
 > In general there are two potential types of duplicate in a library, technical duplicates arising from PCR artefacts, or biological duplicates which are natural collisions where different copies of exactly the same sequence are randomly selected. From a sequence level there is no way to distinguish between these two types and both will be reported as duplicates here.
 >
 >A warning or error in this module is simply a statement that you have exhausted the diversity in at least part of your library and are re-sequencing the same sequences. 
+{: .callout}
 
-> Note
+> ##Note
 >
 > However in some library types you will naturally tend to over-sequence parts of the library and therefore generate duplication and will therefore expect to see warnings or error from this module.
+{: .callout}
 
 **Overrepresented Sequences**
 
 A normal high-throughput library will contain a diverse set of sequences, with no individual sequence making up a tiny fraction of the whole. Finding that a single sequence is very overrepresented in the set either means that it is highly biologically significant, or indicates that the library is contaminated, or not as diverse as you expected.
 
-> Common reasons for warnings
+> ##Common reasons for warnings
 >
 > This module will often be triggered when used to analyse small RNA libraries where sequences are not subjected to random fragmentation, and the same sequence may naturally be present in a significant proportion of the library.
+{: .callout}
 
 **Adapter Content**
 
@@ -174,6 +182,10 @@ The sequences will need to be adapter trimmed before proceeding with any downstr
 
 The Kmer module starts from the assumption that any small fragment of sequence should not have a positional bias in its apearance within a diverse library. There may be biological reasons why certain Kmers are enriched or depleted overall, but these biases should affect all positions within a sequence equally. 
 
-> Common reasons for warnings
+> ##Common reasons for warnings
 >
 > Any individually overrepresented sequences, even if not present at a high enough threshold to trigger the overrepresented sequences module will cause the Kmers from those sequences to be highly enriched in this module. Libraries which derive from random priming will nearly always show Kmer bias at the start of the library due to an incomplete sampling of the possible random primers.
+{: .callout}
+
+Adapted from the documentation of http://www.bioinformatics.babraham.ac.uk/projects/fastqc/
+
