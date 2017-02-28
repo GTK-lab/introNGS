@@ -84,7 +84,8 @@ The per sequence quality score report allows you to see if a subset of your sequ
 >
 > Errors here usually indicate a general loss of quality within a run. Evaluation with tile quality might shed insight to error. 
 >
-> * For long runs this may be alleviated through quality trimming. 
+> * For long runs this may be alleviated through quality trimming.
+> * Read filtering based on quality can also be done to remove reads in the bad sectors.
 {: .callout}
 
 ## Per Base Sequence Content
