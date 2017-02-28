@@ -21,13 +21,13 @@ Before analysing sequencing data to draw biological conclusions you should alway
 
 FastQC aims to provide a QC report which can spot problems which originate either in the sequencer or in the starting library material.
 
-**Downloading FastQC**
-~~~
-wget http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.5.zip
-unzip fastqc_v0.11.5.zip
-cd FastQC
-chmod +x fastqc
-~~~
+> ##Downloading FastQC**
+> ~~~
+> wget http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.5.zip
+> unzip fastqc_v0.11.5.zip
+> cd FastQC
+> chmod +x fastqc
+> ~~~
 {:.bash}
 
 ## A review on the illumina sequencing technology
@@ -50,17 +50,18 @@ Fastqc will produce a .html file which is the quality checking output. Further d
 
 ![Per Base Sequence Quality]({{ page.root }}/fig/per_base_quality.png)
 
-Common reasons for warnings
+> Common reasons for warnings
+> 
+> General degradation of quality over the duration of long runs.
+>
+> * The most common remedy is to perform quality trimming 
+>
+> Short loss of quality earlier in the run, which then recovers to produce later good quality sequence.You can normally see this type of error by looking at the per-tile quality plot. 
+>
+> * Consider masking bases during subsequent mapping or assembly.
+>
+> If your library has reads of varying length then you can find a warning or error is triggered from this module because of very low coverage for a given base range. 
 
-The most common reason for warnings and failures in this module is a general degradation of quality over the duration of long runs.
-
-* The most common remedy is to perform quality trimming 
-
-Another possibility is that a warn / error is triggered because of a short loss of quality earlier in the run, which then recovers to produce later good quality sequence.You can normally see this type of error by looking at the per-tile quality plot. 
-
-* Consider masking bases during subsequent mapping or assembly.
-
-If your library has reads of varying length then you can find a warning or error is triggered from this module because of very low coverage for a given base range. 
 
 **Per Tile Sequence Quality**
 
