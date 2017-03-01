@@ -9,7 +9,9 @@ objectives:
 - "Be able to align raw reads, starting from a raw fastq file." 
 - "Understand the range of options available in bowtie2 for alignment." 
 keypoints:
-
+- "The choice of using bowtie or bowtie2 depends on the specifics of the data in question. bowtie2 is not simply an upgrade of bowtie."
+- "Alignment using bowtie2 can be performed in two steps: generating the index file (only needs to be done once) and then perform alignment using `bowtie2`"
+- "It is important to be aware of what default values for different options are when using command line tools: they are implemented to reduce the amount of options we need to explicitly specify, but occassionally needs to be modified to reflect our needs." 
 ---
 
 # Read alignment using *Bowtie2* 
