@@ -16,6 +16,15 @@ keypoints:
 ## Choosing between *bowtie* and *bowtie2* 
 Two of the most commonly used alignment software packages are *bowtie* and *bowtie2*. Although relatively similar in usage, both software packages are used in different scenarios. This is summarized in the table below. 
 
+|      	        |*bowtie*|*bowtie2*|
+|Read length    | <50bp  |>50bp    |
+|Gaps           | No     |Yes      |
+|Local alignment| No     |Yes      |
+|Ambiguous characters| No |Yes     |
+|Max read length | 1000bp| None    |
+
+In practical terms, *bowtie2* is preferred over *bowtie* where the read lengths are longer **or** there are insertions/deletions that are expected. On the other hand, *bowtie* is preferred when the reads are short. 
+
 > ## Setting up 
 >
 > For this practical session, we will be using *bowtie2*. Install *bowtie2* on your local machines using the `apt-get` package manager. Although the version on `apt-get` might not be the latest, it will suffice for the purposes of this exercise. 
@@ -217,6 +226,22 @@ bowtie2 [options]* -x <bt2-idx> {-1 <m1> -2 <m2> | -U <r>} [-S <sam>]
 
 Remember the index files we generated earlier on? Here, we need to tell `bowtie2` where these files are located, and the prefix of the files. In this way, we can (in theory) have the index files of many different genomes stored in the same location. This is specified in the `-x` argument. The next set of arguments `-1 <m1> -2 <m2>| -R <r>` basically tell `bowtie2` where the fastq files are. As you will recall, NGS can yield either paired-end reads or unpaired-end reads. If we are working with paired-end reads, the results will be returned in 2 files (one for each strand). If such is the case, we will use `-1 <name> -2 <name>`. However, for unpaired end reads, we will only need to use `-U <name>`. Finally, the last option `-S <sam>` specifies the output SAM files. This needs to be specified explicitly. 
 
-> ## Find out
+> ## Find out -- writing of results
 >
 > What happens if no SAM file is specified with the `-S` option? 
+{: .challenge}
+
+> ## Find out -- reporting of alignments
+>
+> Above, we have discussed what happens if one does not specify the output SAM file using the `-S` option. However, the minimal usage (as shown above) makes certain assumptions about what parameters will be used for the alignment. One important thing to consider is how alignments are reported. What happens if a read can be mapped to more than one location along the reference genome? Will *bowtie2* provide the coordinates of said read? And if it does, how does it decide which coordinates to provide? 
+{: .challenge}
+
+> ## Find out -- mismatches
+>
+> Will running *bowtie2* with default options allow for mismatches between the read and the reference genome? If so, how many mismatches are allowed? Which option controls this?
+{: .challenge}
+
+> ## Try it!
+>
+> Having understood some of the more critical parameters that determine the alignment result, now try to align the reads to the reference genome.
+{: .challenge}
