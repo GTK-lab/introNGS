@@ -33,7 +33,7 @@ In practical terms, *bowtie2* is preferred over *bowtie* where the read lengths 
 
 ## Overview of alignment using *bowtie2* 
 
-## Generating the *bowtie2* index file
+## Generating the *bowtie2* index files
 Before we can use *bowtie2* to align the reads, we first need to provide the *index files*. These files contain information about the reference genome, such as the sequence and the coordinates. Although *bowtie2* contains some pre-compiled index files, we will walk through how to generate the index files. 
 
 The index files are generated using a single command, `bowtie2-build`. We can find out the list of arguments and its usage as follows:
@@ -84,6 +84,16 @@ The usage information tells us that `bowtie2-build` requires only 2 arguments: `
 >
 > Download the fasta file containing the human genome. Thereafter, create the *bowtie2* index files. This can take sometime, so be patient with it.
 {: .challenge}
+
+> ## A note on index variables
+>
+> In the previous class, you have been introduced to the concept of an environment variable. It happens that one can specify the location of *bowtie2* index files using the environment variable `BOWTIE2_INDEXES` (for *bowtie*, it will be `BOWTIE_INDEXES`). What is commonly done is the following:
+> 1. Create a folder for storing the index files.
+> 2. Create the index files in the designated folder.
+> 3. Use `export BOWTIE2_INDEXES=<path>` to export the environment variable.
+>
+> The advantage of so-doing is that you do not need to type the whole path name when you run `bowtie2` later on. Also, it allows us to maintain a more tidy file directory structure as we can store the indexes at different folders instead of having everything in the `Downloads` folder.
+
 
 ## Aligning reads to the reference genome
 While `bowtie2-build` works hard to build the index files (this can take up to 15 minutes), we will discuss the usage of `bowtie2` which is the workhorse of alignment. Typing `bowtie2 -h` will yield a **very long** page full of arguments that we can provide to `bowtie2` when we perform the alignment. 
@@ -182,38 +192,8 @@ Options (defaults in parentheses):
   --no-dovetail      not concordant when mates extend past each other
   --no-contain       not concordant when one mate alignment contains other
   --no-overlap       not concordant when mates overlap at all
-
- Output:
-  -t/--time          print wall-clock time taken by search phases
-  --un <path>           write unpaired reads that didn't align to <path>
-  --al <path>           write unpaired reads that aligned at least once to <path>
-  --un-conc <path>      write pairs that didn't align concordantly to <path>
-  --al-conc <path>      write pairs that aligned concordantly at least once to <path>
-  (Note: for --un, --al, --un-conc, or --al-conc, add '-gz' to the option name, e.g.
-  --un-gz <path>, to gzip compress output, or add '-bz2' to bzip2 compress output.)
-  --quiet            print nothing to stderr except serious errors
-  --met-file <path>  send metrics to file at <path> (off)
-  --met-stderr       send metrics to stderr (off)
-  --met <int>        report internal counters & metrics every <int> secs (1)
-  --no-unal          supppress SAM records for unaligned reads
-  --no-head          supppress header lines, i.e. lines starting with @
-  --no-sq            supppress @SQ header lines
-  --rg-id <text>     set read group id, reflected in @RG line and RG:Z: opt field
-  --rg <text>        add <text> ("lab:value") to @RG line of SAM header.
-                     Note: @RG line only printed when --rg-id is set.
-  --omit-sec-seq     put '*' in SEQ and QUAL fields for secondary alignments.
-
- Performance:
-  -p/--threads <int> number of alignment threads to launch (1)
-  --reorder          force SAM output order to match order of input reads
-  --mm               use memory-mapped I/O for index; many 'bowtie's can share
-
- Other:
-  --qc-filter        filter out reads that are bad according to QSEQ filter
-  --seed <int>       seed for random number generator (0)
-  --non-deterministic seed rand. gen. arbitrarily instead of using read attributes
-  --version          print version information and quit
-  -h/--help          print this usage message
+---
+ 
 ~~~
 {: .output}
 
