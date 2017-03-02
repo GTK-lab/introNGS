@@ -9,12 +9,23 @@ objectives:
 - "Be able to align raw reads, starting from a raw fastq file." 
 - "Understand the range of options available in bowtie2 for alignment." 
 keypoints:
-
+- "The choice of using bowtie or bowtie2 depends on the specifics of the data in question. bowtie2 is not simply an upgrade of bowtie."
+- "Alignment using bowtie2 can be performed in two steps: generating the index file (only needs to be done once) and then perform alignment using `bowtie2`"
+- "It is important to be aware of what default values for different options are when using command line tools: they are implemented to reduce the amount of options we need to explicitly specify, but occassionally needs to be modified to reflect our needs." 
 ---
 
 # Read alignment using *Bowtie2* 
 ## Choosing between *bowtie* and *bowtie2* 
 Two of the most commonly used alignment software packages are *bowtie* and *bowtie2*. Although relatively similar in usage, both software packages are used in different scenarios. This is summarized in the table below. 
+
+|      	        |*bowtie*|*bowtie2*|
+|Read length    | <50bp  |>50bp    |
+|Gaps           | No     |Yes      |
+|Local alignment| No     |Yes      |
+|Ambiguous characters| No |Yes     |
+|Max read length | 1000bp| None    |
+
+In practical terms, *bowtie2* is preferred over *bowtie* where the read lengths are longer **or** there are insertions/deletions that are expected. On the other hand, *bowtie* is preferred when the reads are short. 
 
 > ## Setting up 
 >
@@ -22,7 +33,7 @@ Two of the most commonly used alignment software packages are *bowtie* and *bowt
 
 ## Overview of alignment using *bowtie2* 
 
-## Generating the *bowtie2* index file
+## Generating the *bowtie2* index files
 Before we can use *bowtie2* to align the reads, we first need to provide the *index files*. These files contain information about the reference genome, such as the sequence and the coordinates. Although *bowtie2* contains some pre-compiled index files, we will walk through how to generate the index files. 
 
 The index files are generated using a single command, `bowtie2-build`. We can find out the list of arguments and its usage as follows:
@@ -73,6 +84,16 @@ The usage information tells us that `bowtie2-build` requires only 2 arguments: `
 >
 > Download the fasta file containing the human genome. Thereafter, create the *bowtie2* index files. This can take sometime, so be patient with it.
 {: .challenge}
+
+> ## A note on index variables
+>
+> In the previous class, you have been introduced to the concept of an environment variable. It happens that one can specify the location of *bowtie2* index files using the environment variable `BOWTIE2_INDEXES` (for *bowtie*, it will be `BOWTIE_INDEXES`). What is commonly done is the following:
+> 1. Create a folder for storing the index files.
+> 2. Create the index files in the designated folder.
+> 3. Use `export BOWTIE2_INDEXES=<path>` to export the environment variable.
+>
+> The advantage of so-doing is that you do not need to type the whole path name when you run `bowtie2` later on. Also, it allows us to maintain a more tidy file directory structure as we can store the indexes at different folders instead of having everything in the `Downloads` folder.
+
 
 ## Aligning reads to the reference genome
 While `bowtie2-build` works hard to build the index files (this can take up to 15 minutes), we will discuss the usage of `bowtie2` which is the workhorse of alignment. Typing `bowtie2 -h` will yield a **very long** page full of arguments that we can provide to `bowtie2` when we perform the alignment. 
@@ -171,38 +192,8 @@ Options (defaults in parentheses):
   --no-dovetail      not concordant when mates extend past each other
   --no-contain       not concordant when one mate alignment contains other
   --no-overlap       not concordant when mates overlap at all
-
- Output:
-  -t/--time          print wall-clock time taken by search phases
-  --un <path>           write unpaired reads that didn't align to <path>
-  --al <path>           write unpaired reads that aligned at least once to <path>
-  --un-conc <path>      write pairs that didn't align concordantly to <path>
-  --al-conc <path>      write pairs that aligned concordantly at least once to <path>
-  (Note: for --un, --al, --un-conc, or --al-conc, add '-gz' to the option name, e.g.
-  --un-gz <path>, to gzip compress output, or add '-bz2' to bzip2 compress output.)
-  --quiet            print nothing to stderr except serious errors
-  --met-file <path>  send metrics to file at <path> (off)
-  --met-stderr       send metrics to stderr (off)
-  --met <int>        report internal counters & metrics every <int> secs (1)
-  --no-unal          supppress SAM records for unaligned reads
-  --no-head          supppress header lines, i.e. lines starting with @
-  --no-sq            supppress @SQ header lines
-  --rg-id <text>     set read group id, reflected in @RG line and RG:Z: opt field
-  --rg <text>        add <text> ("lab:value") to @RG line of SAM header.
-                     Note: @RG line only printed when --rg-id is set.
-  --omit-sec-seq     put '*' in SEQ and QUAL fields for secondary alignments.
-
- Performance:
-  -p/--threads <int> number of alignment threads to launch (1)
-  --reorder          force SAM output order to match order of input reads
-  --mm               use memory-mapped I/O for index; many 'bowtie's can share
-
- Other:
-  --qc-filter        filter out reads that are bad according to QSEQ filter
-  --seed <int>       seed for random number generator (0)
-  --non-deterministic seed rand. gen. arbitrarily instead of using read attributes
-  --version          print version information and quit
-  -h/--help          print this usage message
+---
+ 
 ~~~
 {: .output}
 
@@ -217,6 +208,22 @@ bowtie2 [options]* -x <bt2-idx> {-1 <m1> -2 <m2> | -U <r>} [-S <sam>]
 
 Remember the index files we generated earlier on? Here, we need to tell `bowtie2` where these files are located, and the prefix of the files. In this way, we can (in theory) have the index files of many different genomes stored in the same location. This is specified in the `-x` argument. The next set of arguments `-1 <m1> -2 <m2>| -R <r>` basically tell `bowtie2` where the fastq files are. As you will recall, NGS can yield either paired-end reads or unpaired-end reads. If we are working with paired-end reads, the results will be returned in 2 files (one for each strand). If such is the case, we will use `-1 <name> -2 <name>`. However, for unpaired end reads, we will only need to use `-U <name>`. Finally, the last option `-S <sam>` specifies the output SAM files. This needs to be specified explicitly. 
 
-> ## Find out
+> ## Find out -- writing of results
 >
 > What happens if no SAM file is specified with the `-S` option? 
+{: .challenge}
+
+> ## Find out -- reporting of alignments
+>
+> Above, we have discussed what happens if one does not specify the output SAM file using the `-S` option. However, the minimal usage (as shown above) makes certain assumptions about what parameters will be used for the alignment. One important thing to consider is how alignments are reported. What happens if a read can be mapped to more than one location along the reference genome? Will *bowtie2* provide the coordinates of said read? And if it does, how does it decide which coordinates to provide? 
+{: .challenge}
+
+> ## Find out -- mismatches
+>
+> Will running *bowtie2* with default options allow for mismatches between the read and the reference genome? If so, how many mismatches are allowed? Which option controls this?
+{: .challenge}
+
+> ## Try it!
+>
+> Having understood some of the more critical parameters that determine the alignment result, now try to align the reads to the reference genome.
+{: .challenge}
