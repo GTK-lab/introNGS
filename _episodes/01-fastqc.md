@@ -1,6 +1,6 @@
 ---
 title: "FastQC"
-teaching: 15
+teaching: 20
 exercises: 15
 questions:
 - "Why do we do a quality check?"
@@ -32,13 +32,17 @@ FastQC aims to provide a QC report which can spot problems which originate eithe
 
 ## A review on the illumina sequencing technology
 
-[https://www.youtube.com/watch?v=HMyCqWhwB8E]({{ https://www.youtube.com/watch?v=HMyCqWhwB8E}})
+[https://www.youtube.com/watch?v=HMyCqWhwB8E](https://www.youtube.com/watch?v=HMyCqWhwB8E)
+
+## A review on the fastq format
+
+[Wikipedia page on FASTQ format](https://en.wikipedia.org/wiki/FASTQ_format)
 
 ## Running FastQC
 Let's do a quality check on the runs you would have downloaded from IVLE. They are the first 1 million reads of a paired-end RNA-seq experiment. 
 
 ~~~
-fastqc SRRXXX_1.fastq.gz SRRXXX_2.fastq.gz
+fastqc Something_1.fastq.gz Something_2.fastq.gz
 ~~~
 {: .bash}
 
@@ -188,5 +192,10 @@ The Kmer module starts from the assumption that any small fragment of sequence s
 > Any individually overrepresented sequences, even if not present at a high enough threshold to trigger the overrepresented sequences module will cause the Kmers from those sequences to be highly enriched in this module. Libraries which derive from random priming will nearly always show Kmer bias at the start of the library due to an incomplete sampling of the possible random primers.
 {: .callout}
 
-Adapted from the documentation of http://www.bioinformatics.babraham.ac.uk/projects/fastqc/
+## Trimming and Filtering Tools
+[FASTX-TOOL KIT](http://hannonlab.cshl.edu/fastx_toolkit/index.html)
+[cutadapt](http://cutadapt.readthedocs.io/en/stable/guide.html)
+[Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic) 
+
+Adapted from the documentation of [http://www.bioinformatics.babraham.ac.uk/projects/fastqc/](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
 
