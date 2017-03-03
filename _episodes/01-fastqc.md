@@ -194,7 +194,9 @@ The Kmer module starts from the assumption that any small fragment of sequence s
 
 ## Trimming and Filtering Tools
 [FASTX-TOOL KIT](http://hannonlab.cshl.edu/fastx_toolkit/index.html)
+
 [cutadapt](http://cutadapt.readthedocs.io/en/stable/guide.html)
+
 [Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic) 
 
 Adapted from the documentation of [http://www.bioinformatics.babraham.ac.uk/projects/fastqc/](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
