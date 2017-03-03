@@ -42,7 +42,7 @@ FastQC aims to provide a QC report which can spot problems which originate eithe
 Let's do a quality check on the runs you would have downloaded from IVLE. They are the first 1 million reads of a paired-end RNA-seq experiment. 
 
 ~~~
-fastqc Something_1.fastq.gz Something_2.fastq.gz
+/path/to/fastqc MDA_0hr_subset_R1.fastq.gz MDA_0hr_subset_R2.fastq.gz
 ~~~
 {: .bash}
 
