@@ -39,14 +39,15 @@ FastQC aims to provide a QC report which can spot problems which originate eithe
 [Wikipedia page on FASTQ format](https://en.wikipedia.org/wiki/FASTQ_format)
 
 ## Running FastQC
-Let's do a quality check on the runs you would have downloaded from IVLE. They are the first 1 million reads of a paired-end RNA-seq experiment. 
+Let's do a quality check on the runs you would have downloaded from
+IVLE. They are simulated reads from the sequencing of a yeast genome. 
 
 ~~~
-/path/to/fastqc MDA_0hr_subset_R1.fastq.gz MDA_0hr_subset_R2.fastq.gz
+/path/to/fastqc saccer3_reads1.fq saccer3_reads2.fq
 ~~~
 {: .bash}
 
-Fastqc will produce a .html file which is the quality checking output. Further details of the report and the individual pictures can be found in the zip file. 
+Fastqc will produce a *.html* file which is the quality checking output. Further details of the report and the individual pictures can be found in the zip file. 
 
 ## Analysing a FastQC report
 
